@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{ title }}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="{{ static('css/style.css') }}">
+	</head>
+	<body>
+		<div class="constrained">
+			<header id="header">
+				<h1><a href="{{ url('site.home') }}">Badger Sett</a></h1>
+				<nav>
+					<ul>
+						<li{% if nav == 'badges' %} class="active"{% endif %}><a href="{{ url('site.badges') }}">Badges</a></li>
+						<li{% if nav == 'search' %} class="active"{% endif %}><a href="{{ url('site.search') }}">Search</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<div id="content">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+	</body>
+</html>

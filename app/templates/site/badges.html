@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% set nav = 'badges' %}
+
+{% block content %}
+	{% if featured %}
+		<h2>Featured Badges</h2>
+		<ul class="grid">
+			{% for badge in featured %}
+				<li class="item">
+					{% include "includes/badge-thumb.html" %}
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+	{% if latest %}
+		<h2>Latest Badges</h2>
+		<ul class="grid">
+			{% for badge in latest %}
+				<li class="item">
+					{% include "includes/badge-thumb.html" %}
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock %}

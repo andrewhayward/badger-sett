@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% set nav = 'badges' %}
+
+{% block content %}
+	<div class="panel">
+		<div class="badge">
+			<h2 class="title">{{ instance.name }}</h2>
+			<img src="{{ static('images/4x3.png') }}" alt="" class="image">
+			<p>{{ instance.description }}</p>
+			{% if instance.tags %}
+				<ul class="tags">
+					{% for tag in instance.tags %}
+						<li class="tag"><a href="#" rel="tag">{{ tag }}</a></li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+	{% if similar %}
+		<h2>Similar Badges</h2>
+		<ul class="grid">
+			{% for badge in similar %}
+				<li class="item">
+					{% include "includes/badge-thumb.html" %}
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock %}

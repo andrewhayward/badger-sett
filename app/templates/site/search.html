@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% set nav = 'search' %}
+
+{% block content %}
+	{% include "includes/search.html" %}
+
+	{% if query and results %}
+		<ul class="grid">
+			{% for badge in results %}
+				<li class="item">
+					{% include "includes/badge-thumb.html" %}
+				</li>
+			{% endfor %}
+		</ul>
+	{% elif query %}
+		<p>No results found</p>
+	{% endif %}
+{% endblock %}

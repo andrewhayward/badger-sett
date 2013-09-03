@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://schemas.openbadges.org/badges/0.1"
+            xmlns="http://schemas.openbadges.org/badges/0.1"
+            elementFormDefault="qualified">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            XML Schema for Badge List files.
+            Last Modifed 2013-08-01
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="badgelist">
+        <xsd:annotation>
+            <xsd:documentation>
+                Container for a set of badge elements.
+                This is the root element of the XML file.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="badge" type="tBadge" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="tBadge">
+        <xsd:annotation>
+            <xsd:documentation>
+                Container for the data needed to describe a badge assertion to extract.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="loc" type="tLoc"/>
+            <xsd:element name="priority" type="tPriority" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="tLoc">
+        <xsd:annotation>
+            <xsd:documentation>
+                REQUIRED: The location URI of a badge assertion.
+                The URI must conform to RFC 2396 (http://www.ietf.org/rfc/rfc2396.txt).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:anyURI">
+            <xsd:minLength value="12"/>
+            <xsd:maxLength value="2048"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tPriority">
+        <xsd:annotation>
+            <xsd:documentation>
+                OPTIONAL: The priority of a particular badge relative to other badges
+                on the same site. The value for this element is a number between
+                0.0 and 1.0 where 0.0 identifies the lowest priority badge(s).
+                The default priority of a badge is 0.5. Priority is used to select
+                between badges on your site. Setting a priority of 1.0 for all badges
+                will not help you, as the relative priority of badges on your site
+                is what will be considered.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+            <xsd:minInclusive value="0.0"/>
+            <xsd:maxInclusive value="1.0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

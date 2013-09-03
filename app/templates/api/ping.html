@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	<p>Detracto salutandi ut vis? Te erat posidonium cum, te omnium inermis ius. Mea erant postulant vulputate ea, sit id tota reformidans. Aperiam aperiri ut has.</p>
+	<div class="well">
+		<form class="form" method="get" action="{{ url('api.ping') }}">
+			<div class="input-append">
+				<input class="input-xxlarge" name="uri" value="{{ uri }}" autofocus type="text">
+				<button class="btn" type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
+	{% if results %}
+		<p>{{ results }}</p>
+	{% endif %}
+{% endblock %}
