@@ -1,4 +1,4 @@
 Badger Sett
 ===========
 
-A places for all the badgers to live.
+A place for all the badgers to live.
